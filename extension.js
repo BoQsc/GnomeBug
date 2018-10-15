@@ -4,19 +4,24 @@ const ME = ExtensionUtils.getCurrentExtension();
 const panel = ME.imports.panel;
 
 
+class Extension {
+constructor() {}
 
 
+ enable() {
+  panel._showHello();
+ }
 
 
+ disable() {
+
+ }
+
+}
 
 function init() {
-   panel._showHello();
+    return new Extension();
 }
 
-function enable() {
 
-}
 
-function disable() {
-
-}

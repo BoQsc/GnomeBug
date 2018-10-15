@@ -9,7 +9,13 @@ constructor() {}
 
 
  enable() {
+
+        this.button = new panel.Button();
+        this.icon = new panel.ButtonIcon();
+        // Add icon inside the button
+this.button.set_child(this.icon);
   panel._showHello();
+Main.panel._rightBox.insert_child_at_index(this.button, 0);
  }
 
 

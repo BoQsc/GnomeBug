@@ -2,6 +2,7 @@
 const ExtensionUtils = imports.misc.extensionUtils;
 const ME = ExtensionUtils.getCurrentExtension();
 const panel = ME.imports.panel;
+const Main = imports.ui.main;
 
 
 class Extension {
@@ -20,7 +21,7 @@ Main.panel._rightBox.insert_child_at_index(this.button, 0);
 
 
  disable() {
-
+ Main.panel._rightBox.remove_child(this.button);
  }
 
 }

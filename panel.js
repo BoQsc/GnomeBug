@@ -1,3 +1,7 @@
+const Main = imports.ui.main;
+const Tweener = imports.ui.tweener;
+const St = imports.gi.St;
+
 let text, button;
 
 function _hideHello() {

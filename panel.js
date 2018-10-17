@@ -14,6 +14,8 @@ class Button extends St.Bin {
 
 	// Add icon inside the button
 	this.set_child(new ButtonIcon());
+
+        this.connect('button-press-event', _showHello);
     }
 
 };

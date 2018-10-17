@@ -13,7 +13,7 @@ constructor() {}
  enable() {
 
         this.button = new panel.Button();
-        var GnomeTopPanel=Main.panel;
+        let GnomeTopPanel=Main.panel;
 	GnomeTopPanel._rightBox.insert_child_at_index(this.button, 0)
         panel._showHello();
  }

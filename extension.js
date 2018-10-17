@@ -1,3 +1,4 @@
+"use strict"
 //Importing Native Modules 
 const ExtensionUtils = imports.misc.extensionUtils;
 const ME = ExtensionUtils.getCurrentExtension();
@@ -12,7 +13,8 @@ constructor() {}
  enable() {
 
         this.button = new panel.Button();
-        Main.panel._rightBox.insert_child_at_index(this.button, 0);
+        var GnomeTopPanel=Main.panel;
+	GnomeTopPanel._rightBox.insert_child_at_index(this.button, 0)
         panel._showHello();
  }
 
@@ -26,6 +28,7 @@ constructor() {}
 function init() {
     return new Extension();
 }
+
 
 
 

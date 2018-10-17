@@ -12,8 +12,8 @@ constructor() {}
  enable() {
 
         this.button = new panel.Button();
-        panel._showHello();
         Main.panel._rightBox.insert_child_at_index(this.button, 0);
+        panel._showHello();
  }
 
 

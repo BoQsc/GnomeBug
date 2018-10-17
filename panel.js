@@ -11,7 +11,11 @@ class Button extends St.Bin {
         this.x_fill = true;
         this.y_fill = false;
         this.track_hover = true;
+
+	// Add icon inside the button
+	this.set_child(new ButtonIcon());
     }
+
 };
 
 class ButtonIcon extends St.Icon {

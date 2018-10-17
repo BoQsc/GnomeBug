@@ -11,14 +11,14 @@ constructor() {}
 
  enable() {
 
-        this.button = new panel.Button();
-        Main.panel._rightBox.insert_child_at_index(this.button, 0);
+        this.panelButton = new panel.Button();
+        Main.panel._rightBox.insert_child_at_index(this.panelButton, 0);
         panel._showHello();
  }
 
 
  disable() {
- Main.panel._rightBox.remove_child(this.button);
+ Main.panel._rightBox.remove_child(this.panelButton);
  }
 
 }

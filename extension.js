@@ -12,7 +12,7 @@ const Main = imports.ui.main;
 class Extension {
     constructor() {
 	
-	// Create new Button from . /PanelButton.js
+	// Create new Button from ./PanelButton.js
         this.button = new PanelButton.Button;
     }
 

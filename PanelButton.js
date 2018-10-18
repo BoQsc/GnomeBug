@@ -14,11 +14,16 @@ class Button extends St.Bin {
 
 	// Add icon inside the button
 	this.set_child(new ButtonIcon());
-
+	
+	// Execute _showHello function
         this.connect('button-press-event', _showHello);
     }
 
 };
+
+
+
+
 
 class ButtonIcon extends St.Icon {
     constructor() {

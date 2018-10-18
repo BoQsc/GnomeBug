@@ -1,7 +1,11 @@
+"use strict"
+
 const Main = imports.ui.main;
 const Tweener = imports.ui.tweener;
 const St = imports.gi.St;
 
+
+// Button Container
 class Button extends St.Bin {
     constructor() {
         super();
@@ -22,9 +26,7 @@ class Button extends St.Bin {
 };
 
 
-
-
-
+// Button Icon (widget placed into Button Container)
 class ButtonIcon extends St.Icon {
     constructor() {
         super();
@@ -37,29 +39,41 @@ class ButtonIcon extends St.Icon {
 
 
 
-let text, button;
+// We need to create Label to display a text
+// Which later we position on the center of the Monitor
+class LabelWidget extends St.Label {
+    constructor() {
+        super();
+        this.style_class = "helloworld-label";
+        this.text = "Hello, world!";
+    }
+};
 
-function _hideHello() {
-    Main.uiGroup.remove_actor(text);
-    text = null;
-}
+
+
+let LabelWithText;
 
 function _showHello() {
-    if (!text) {
-        text = new St.Label({ style_class: 'helloworld-label', text: "Hello, world!" });
-        Main.uiGroup.add_actor(text);
+    if (!LabelWithText) {
+        LabelWithText = new LabelWidget();
+        Main.uiGroup.add_actor(LabelWithText);
     }
 
-    text.opacity = 255;
+    LabelWithText.opacity = 255;
 
     let monitor = Main.layoutManager.primaryMonitor;
 
-    text.set_position(monitor.x + Math.floor(monitor.width / 2 - text.width / 2),
-                      monitor.y + Math.floor(monitor.height / 2 - text.height / 2));
+    LabelWithText.set_position(monitor.x + Math.floor(monitor.width / 2 - LabelWithText.width / 2),
+                      monitor.y + Math.floor(monitor.height / 2 - LabelWithText.height / 2));
 
-    Tweener.addTween(text,
+    Tweener.addTween(LabelWithText,
                      { opacity: 0,
                        time: 10,
                        transition: 'easeOutQuad',
                        onComplete: _hideHello });
+}
+
+function _hideHello() {
+    Main.uiGroup.remove_actor(LabelWithText);
+    LabelWithText = null;
 }

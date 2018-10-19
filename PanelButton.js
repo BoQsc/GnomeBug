@@ -39,13 +39,14 @@ class ButtonIcon extends St.Icon {
 
 
 
-// We need to create Label to display a text
+// We need to create Label Widget to display a text
 // Which later we position on the center of the Monitor
 class LabelWidget extends St.Label {
     constructor() {
         super();
         this.style_class = "helloworld-label";
         this.text = "Hello, world!";
+        this.opacity = 255;
     }
 };
 
@@ -53,13 +54,24 @@ class LabelWidget extends St.Label {
 
 let LabelWithText;
 
+
+function _hideHello() {
+    Main.uiGroup.remove_actor(LabelWithText);
+    LabelWithText = null;
+}
+
 function _showHello() {
+    // If label with text already exists, do not let create another one
+    // Seems to not show if lots of times are pressed and later pressed again
+    // Gets stuck with valuating if statemtent
+
+    // This actually produces objects with generated custom id, while class references to the same object.
+    // text = new St.Label({ style_class: 'helloworld-label', text: "Hello, world!" });
+
     if (!LabelWithText) {
         LabelWithText = new LabelWidget();
         Main.uiGroup.add_actor(LabelWithText);
     }
-
-    LabelWithText.opacity = 255;
 
     let monitor = Main.layoutManager.primaryMonitor;
 
@@ -68,12 +80,8 @@ function _showHello() {
 
     Tweener.addTween(LabelWithText,
                      { opacity: 0,
-                       time: 10,
+                       time: 2,
                        transition: 'easeOutQuad',
                        onComplete: _hideHello });
 }
 
-function _hideHello() {
-    Main.uiGroup.remove_actor(LabelWithText);
-    LabelWithText = null;
-}
